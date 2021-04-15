@@ -30,7 +30,7 @@ export class License {
 
                 this.authorProperty = this.doesLicenseHaveAuthorField();
                 this.yearProperty = this.doesLicenseHaveYearField();     
-
+                
                 if (this.yearProperty) {
                     this.licenseText = replaceTextWith(this.licenseText, YEAR_REPLACE, `${getCurrentYear()}`);
                 }
@@ -39,6 +39,10 @@ export class License {
 
     public hasAuthorProperty (): boolean {
         return this.authorProperty;
+    }
+
+    public hasYearProperty (): boolean {
+        return this.yearProperty;
     }
 
     public setAuthorProperty (author: string): void {

@@ -8,3 +8,7 @@ run:
 
 compile:
 	deno compile ${options} -o ${output} ${file}
+test:
+	deno test ${options}
+test-debug:
+	deno test -L debug ${options} ${args}
