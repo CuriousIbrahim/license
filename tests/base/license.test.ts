@@ -30,8 +30,6 @@ Deno.test("base/license.License#3", async () => {
 
     license.setAuthorProperty("John Doe");
 
-    console.log("is equal", license.getLicenseText(), expected2, license.getLicenseText() === expected2);
-
     assertEquals(license.getLicenseText(), expected2);
 });
 
