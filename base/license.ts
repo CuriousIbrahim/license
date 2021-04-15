@@ -24,7 +24,9 @@ export class License {
 
         getLicenseMapping()
             .then(mapping => {
-                this.licenseText = mapping.get(licenseName)!;
+                const licensePath = mapping.get(licenseName);
+
+                this.licenseText = Deno.readTextFileSync(licensePath!);
 
                 this.authorProperty = this.doesLicenseHaveAuthorField();
                 this.yearProperty = this.doesLicenseHaveYearField();     

@@ -24,7 +24,7 @@ const main = async () => {
         Deno.exit(1);
     }
 
-    const license = new License(licenseArg);
+    const license = await new License(licenseArg);
 
     if (license.hasAuthorProperty()) {
         const ask = new Ask();
@@ -39,7 +39,7 @@ const main = async () => {
 
     Deno.writeTextFile(DEFAULT_OUTPUT_NAME, license.getLicenseText());
 
-    console.log(`Created ${license.getLicenseName()} in ${DEFAULT_OUTPUT_NAME} file`);
+    console.log(`Created ${license.getLicenseName()} license in ${DEFAULT_OUTPUT_NAME} file`);
 }
 
 await main();

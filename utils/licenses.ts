@@ -27,4 +27,3 @@ export const getLicenseMapping = async (): Promise<Map<string, string>> => {
 export const getLicenseOptions = async (): Promise<string[]> => {
     return Array.from((await getLicenseMapping()).keys());
 }
-
