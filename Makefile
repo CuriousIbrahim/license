@@ -14,3 +14,6 @@ test:
 
 lint:
 	deno lint --unstable
+
+format:
+	deno fmt --check
