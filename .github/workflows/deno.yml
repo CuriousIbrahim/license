@@ -29,7 +29,7 @@ jobs:
         run: make lint
 
   test:
-    runs-on: ${{ matrix.os }} # runs a test on Ubuntu, Windows and macOS
+    runs-on: ${{ matrix.os }}
 
     strategy:
       fail-fast: false
@@ -48,3 +48,24 @@ jobs:
 
       - name: Run Tests
         run: make test
+
+  compile:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macOS-latest, windows-latest, ubuntu-latest]
+        deno: ["v1.x", "nightly"]
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v2
+
+      - name: Setup Deno
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: ${{ matrix.deno }}
+
+      - name: Run Tests
+        run: make compile
