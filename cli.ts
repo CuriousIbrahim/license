@@ -1,46 +1,48 @@
-import { Ask }  from "./imports/ask.ts";
+import { Ask } from "./imports/ask.ts";
 import { License } from "./base/license.ts";
 import { getLicenseMapping, getLicenseOptions } from "./utils/licenses.ts";
 import { DEFAULT_OUTPUT_NAME, INSTRUCTIONS } from "./constants.ts";
 
-
 const main = async () => {
-    const mapping = getLicenseMapping();
+  const mapping = getLicenseMapping();
 
-    if (Deno.args.length == 0) {
-        console.error(INSTRUCTIONS);
-        Deno.exit(0);
-    }
-    
-    const licenseArg = Deno.args[0];
+  if (Deno.args.length == 0) {
+    console.error(INSTRUCTIONS);
+    Deno.exit(0);
+  }
 
-    if (licenseArg === "list") {
-        console.log(`Options: ${getLicenseOptions()}`);
-        Deno.exit(0);
-    }
+  const licenseArg = Deno.args[0];
 
-    if (!mapping.has(licenseArg)) {
-        console.error(`ERROR: ${licenseArg} is not a valid choice.\n${INSTRUCTIONS}`);
-        Deno.exit(1);
-    }
+  if (licenseArg === "list") {
+    console.log(`Options: ${getLicenseOptions()}`);
+    Deno.exit(0);
+  }
 
-    const license = new License(licenseArg);
+  if (!mapping.has(licenseArg)) {
+    console.error(
+      `ERROR: ${licenseArg} is not a valid choice.\n${INSTRUCTIONS}`,
+    );
+    Deno.exit(1);
+  }
 
-    if (license.hasAuthorProperty()) {
-        const ask = new Ask();
+  const license = new License(licenseArg);
 
-        const { author } = await ask.input({
-            name: "author",
-            message: "Enter the author's name:"
-        })
+  if (license.hasAuthorProperty()) {
+    const ask = new Ask();
 
-        license.setAuthorProperty(author!);
-    }
+    const { author } = await ask.input({
+      name: "author",
+      message: "Enter the author's name:",
+    });
 
-    Deno.writeTextFile(DEFAULT_OUTPUT_NAME, license.getLicenseText());
+    license.setAuthorProperty(author!);
+  }
 
-    console.log(`Created ${license.getLicenseName()} license in ${DEFAULT_OUTPUT_NAME} file`);
-}
+  Deno.writeTextFile(DEFAULT_OUTPUT_NAME, license.getLicenseText());
+
+  console.log(
+    `Created ${license.getLicenseName()} license in ${DEFAULT_OUTPUT_NAME} file`,
+  );
+};
 
 main();
-
