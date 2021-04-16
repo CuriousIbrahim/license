@@ -67,5 +67,5 @@ jobs:
         with:
           deno-version: ${{ matrix.deno }}
 
-      - name: Run Tests
+      - name: Run Compile
         run: make compile
