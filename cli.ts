@@ -5,7 +5,7 @@ import { DEFAULT_OUTPUT_NAME, INSTRUCTIONS } from "./constants.ts";
 
 
 const main = async () => {
-    const mapping = await getLicenseMapping();
+    const mapping = getLicenseMapping();
 
     if (Deno.args.length == 0) {
         console.error(INSTRUCTIONS);
@@ -15,7 +15,7 @@ const main = async () => {
     const licenseArg = Deno.args[0];
 
     if (licenseArg === "list") {
-        console.log(`Options: ${await getLicenseOptions()}`);
+        console.log(`Options: ${getLicenseOptions()}`);
         Deno.exit(0);
     }
 
@@ -24,7 +24,7 @@ const main = async () => {
         Deno.exit(1);
     }
 
-    const license = await new License(licenseArg);
+    const license = new License(licenseArg);
 
     if (license.hasAuthorProperty()) {
         const ask = new Ask();
@@ -42,5 +42,5 @@ const main = async () => {
     console.log(`Created ${license.getLicenseName()} license in ${DEFAULT_OUTPUT_NAME} file`);
 }
 
-await main();
+main();
 

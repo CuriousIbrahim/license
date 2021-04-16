@@ -22,19 +22,18 @@ export class License {
     constructor (licenseName: string) {
         this.licenseName = licenseName;        
 
-        getLicenseMapping()
-            .then(mapping => {
-                const licensePath = mapping.get(licenseName);
+        const mapping = getLicenseMapping();
 
-                this.licenseText = Deno.readTextFileSync(licensePath!);
+        const licensePath = mapping.get(licenseName);
 
-                this.authorProperty = this.doesLicenseHaveAuthorField();
-                this.yearProperty = this.doesLicenseHaveYearField();     
-                
-                if (this.yearProperty) {
-                    this.licenseText = replaceTextWith(this.licenseText, YEAR_REPLACE, `${getCurrentYear()}`);
-                }
-            });
+        this.licenseText = Deno.readTextFileSync(licensePath!);
+
+        this.authorProperty = this.doesLicenseHaveAuthorField();
+        this.yearProperty = this.doesLicenseHaveYearField();     
+        
+        if (this.yearProperty) {
+            this.licenseText = replaceTextWith(this.licenseText, YEAR_REPLACE, `${getCurrentYear()}`);
+        }
     }
 
     public hasAuthorProperty (): boolean {
@@ -64,5 +63,4 @@ export class License {
     private doesLicenseHaveYearField (): boolean {
         return doesTextInclude(this.licenseText, YEAR_REPLACE)
     }
-
 }

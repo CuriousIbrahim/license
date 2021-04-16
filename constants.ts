@@ -1,4 +1,4 @@
-import { getLicenseOptions} from "./utils/licenses.ts";
+import { getLicenseOptions } from "./utils/licenses.ts";
 
 export const DEFAULT_OUTPUT_NAME = "LICENSE";
 export const LICENSE_DIR = "./templates";
@@ -15,7 +15,7 @@ USAGE
     license [license-name]
 
     - license-name can be one of the following options:
-      ${await getLicenseOptions()}
+      ${getLicenseOptions()}
 
 EXAMPLE
 

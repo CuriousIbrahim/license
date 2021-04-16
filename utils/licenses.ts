@@ -9,9 +9,9 @@ const licenseFiles: Map<string, string> = new Map();
 
 const isLicenseFilesEmpty = (): boolean => Array.from(licenseFiles.keys()).length === 0;
 
-export const getLicenseMapping = async (): Promise<Map<string, string>> => {
+export const getLicenseMapping = (): Map<string, string> => {
     if (isLicenseFilesEmpty()) {
-        for await (const dirEntry of Deno.readDir(LICENSE_DIR)) {
+        for (const dirEntry of Deno.readDirSync(LICENSE_DIR)) {
             const fileName = dirEntry["name"];
             const nameSplit = fileName.split(".")
             const name = nameSplit.splice(0, nameSplit.length - 1).join(".");
@@ -24,6 +24,6 @@ export const getLicenseMapping = async (): Promise<Map<string, string>> => {
 }
 
 
-export const getLicenseOptions = async (): Promise<string[]> => {
-    return Array.from((await getLicenseMapping()).keys());
+export const getLicenseOptions = (): string[] => {
+    return Array.from(getLicenseMapping().keys());
 }
