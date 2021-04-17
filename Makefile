@@ -10,7 +10,7 @@ compile:
 	deno compile ${options} -o ${output} ${file}
 
 test:
-	deno test ${options}
+	deno test ${options} -L debug
 
 lint:
 	deno lint --unstable
