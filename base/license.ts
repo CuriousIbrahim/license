@@ -1,4 +1,4 @@
-import { getLicenseMapping } from "../utils/licenses.ts";
+import { LicenseMapping } from "../utils/licenses.ts";
 import { AUTHOR_REPLACE, YEAR_REPLACE } from "../constants.ts";
 import { getCurrentYear } from "../utils/date.ts";
 import { doesTextInclude, replaceTextWith } from "../utils/string.ts";
@@ -12,7 +12,7 @@ export class License {
   constructor(licenseName: string) {
     this.licenseName = licenseName;
 
-    const mapping = getLicenseMapping();
+    const mapping = LicenseMapping.getInstance();
 
     const licensePath = mapping.get(licenseName);
 
