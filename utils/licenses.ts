@@ -21,5 +21,6 @@ export const getLicenseMapping = (): Map<string, string> => {
 };
 
 export const getLicenseOptions = (): string[] => {
-  return Array.from(getLicenseMapping().keys());
+  // return Array.from(getLicenseMapping().keys());
+  return [];
 };
