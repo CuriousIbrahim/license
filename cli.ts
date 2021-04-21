@@ -1,6 +1,6 @@
 import { Ask } from "./imports/ask.ts";
 import { License } from "./base/license.ts";
-import { LicenseMapping, getLicenseOptions } from "./utils/licenses.ts";
+import { getLicenseOptions, LicenseMapping } from "./utils/licenses.ts";
 import { DEFAULT_OUTPUT_NAME, INSTRUCTIONS } from "./constants.ts";
 
 const main = async () => {

@@ -1,6 +1,6 @@
 import { assertEquals } from "https://deno.land/std@0.93.0/testing/asserts.ts";
 import { LICENSE_DIR } from "../../constants.ts";
-import { LicenseMapping, getLicenseOptions } from "../../utils/licenses.ts";
+import { getLicenseOptions, LicenseMapping } from "../../utils/licenses.ts";
 import { join } from "../../imports/path.ts";
 
 Deno.test("utils/licenses.getLicenseMapping#1", async () => {

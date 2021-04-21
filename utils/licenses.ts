@@ -15,7 +15,7 @@ export class LicenseMapping {
         const fileName = dirEntry["name"];
         const nameSplit = fileName.split(".");
         const name = nameSplit.splice(0, nameSplit.length - 1).join(".");
-  
+
         this.instance.set(name, join(LICENSE_DIR, fileName));
       }
     }
@@ -23,4 +23,3 @@ export class LicenseMapping {
     return this.instance;
   }
 }
-

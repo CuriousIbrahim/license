@@ -44,7 +44,7 @@ jobs:
           deno-version: ${{ matrix.deno }}
 
       - name: Run Format-Check
-        run: make format
+        run: make format-check
 
   test:
     runs-on: ${{ matrix.os }}
