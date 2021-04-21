@@ -1,10 +1,6 @@
 import { LICENSE_DIR } from "../constants.ts";
 import { join } from "../imports/path.ts";
 
-export const getLicenseOptions = (): string[] => {
-  return Array.from(LicenseMapping.getInstance().keys());
-};
-
 export class LicenseMapping {
   private static instance: Map<string, string>;
 
@@ -23,3 +19,7 @@ export class LicenseMapping {
     return this.instance;
   }
 }
+
+export const getLicenseOptions = (): string[] => {
+  return Array.from(LicenseMapping.getInstance().keys());
+};
