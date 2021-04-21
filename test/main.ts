@@ -1,3 +1,3 @@
-import { a1 } from "./A.ts"
+import { a2 } from "./A.ts";
 
-a1();
+console.log(a2());

@@ -1,8 +1,9 @@
-import { a2 } from "./A.ts";
+import { a1 } from "./A.ts";
 
-export const b1 = "b1";
+export const b1 = () => {
+  return a1;
+};
 
 export const b2 = () => {
-    console.log(a2);
-}
-
+  return b1();
+};
