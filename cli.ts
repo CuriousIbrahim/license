@@ -1,10 +1,10 @@
 import { Ask } from "./imports/ask.ts";
 import { License } from "./base/license.ts";
-import { getLicenseMapping, getLicenseOptions } from "./utils/licenses.ts";
+import { getLicenseOptions, LicenseMapping } from "./utils/licenses.ts";
 import { DEFAULT_OUTPUT_NAME, INSTRUCTIONS } from "./constants.ts";
 
 const main = async () => {
-  const mapping = getLicenseMapping();
+  const mapping = LicenseMapping.getInstance();
 
   if (Deno.args.length == 0) {
     console.error(INSTRUCTIONS);

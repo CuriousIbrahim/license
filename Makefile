@@ -10,10 +10,13 @@ compile:
 	deno compile ${options} -o ${output} ${file}
 
 test:
-	deno test ${options} -L debug
+	deno test ${options}
 
 lint:
 	deno lint --unstable
 
-format:
+format-check:
 	deno fmt --check
+
+format:
+	deno fmt
